@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class J02008_Bsnncuansonguyenduongdautien {
+    public static long uocChung(long a, long b){
+        if(b==0) return a;
+        return uocChung(b, a%b);
+    }
+    public static long boiChung(long a, long b){
+        return (a/uocChung(a, b))*b;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t>0){
+            t--;
+            long n = sc.nextLong();
+            long a = 1;
+            for(long i=2;i<=n;i++){
+                a = boiChung(a, i);
+            }
+            System.out.println(a);
+        }
+    }
+}
